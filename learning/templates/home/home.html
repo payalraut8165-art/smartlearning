@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart LMS Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:linear-gradient(
+135deg,
+#4f46e5 0%,
+#7c3aed 50%,
+#c084fc 100%
+);
+
+min-height:100vh;
+padding:20px;
+color:white;
+}
+
+.glass-panel{
+
+background:rgba(255,255,255,.1);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.2);
+
+border-radius:20px;
+
+}
+
+.navbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 30px;
+
+margin-bottom:20px;
+
+}
+
+.logout-btn{
+
+background:white;
+
+color:#4f46e5;
+
+padding:10px 20px;
+
+border-radius:30px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+
+.dashboard-layout{
+
+display:grid;
+
+grid-template-columns:300px 1fr;
+
+gap:20px;
+
+}
+
+.profile-card{
+
+padding:30px;
+
+text-align:center;
+
+height:fit-content;
+
+}
+
+.profile-img{
+
+width:110px;
+
+height:110px;
+
+border-radius:50%;
+
+border:3px solid white;
+
+object-fit:cover;
+
+margin-bottom:15px;
+
+}
+
+.info-list{
+
+margin-top:20px;
+
+text-align:left;
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.slider-container{
+
+position:relative;
+
+height:250px;
+
+overflow:hidden;
+
+border-radius:20px;
+
+margin-bottom:25px;
+
+}
+
+.slider-wrapper{
+
+display:flex;
+
+height:100%;
+
+transition:transform .5s ease;
+}
+
+.slide{
+
+min-width:100%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-around;
+
+padding:30px;
+}
+
+.slide h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+}
+
+.slide i{
+
+font-size:80px;
+
+opacity:.6;
+}
+
+.dots{
+
+position:absolute;
+
+bottom:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+display:flex;
+
+gap:10px;
+}
+
+.dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.3);
+
+cursor:pointer;
+}
+
+.dot.active{
+
+background:white;
+
+width:25px;
+
+border-radius:20px;
+}
+
+.cards-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+}
+
+.subject-card{
+
+padding:20px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.5s;
+}
+
+.subject-card:hover{
+
+transform:translateY(-8px);
+
+background:rgba(255,255,255,.2);
+
+}
+
+.subject-card i{
+
+font-size:40px;
+
+margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar glass-panel">
+
+<h2>
+
+Smart LMS |
+Hi {{student.first_name}}
+
+</h2>
+
+<a href="{% url 'logout' %}"
+class="logout-btn">
+
+Logout
+
+</a>
+
+</div>
+
+<div class="dashboard-layout">
+
+<div class="profile-card glass-panel">
+
+{% if student.profile_pic %}
+
+<img
+src="{{student.profile_pic.url}}"
+class="profile-img">
+
+{% else %}
+
+<div class="profile-img"
+style="
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(255,255,255,.2);
+font-size:40px;">
+
+<i class="fas fa-user"></i>
+
+</div>
+
+{% endif %}
+
+<h3>
+
+{{student.first_name}}
+{{student.last_name}}
+
+</h3>
+
+<div class="info-list">
+
+<div>
+📧 {{student.email}}
+</div>
+
+<div>
+📱 {{student.phone_number}}
+</div>
+
+<div>
+🏙 {{student.city}}
+</div>
+
+<div>
+🔥 Streak : 5 Days
+</div>
+
+<div>
+🏆 Beginner Badge
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="slider-container glass-panel">
+
+<div
+class="slider-wrapper"
+id="slider">
+
+<div class="slide">
+
+<div>
+
+<h2>
+Master Python 🐍
+</h2>
+
+<p>
+Learn Python & Django
+</p>
+
+</div>
+
+<i class="fab fa-python"></i>
+
+</div>
+
+<div class="slide">
+
+<div>
+
+<h2>
+Learn Frontend 🎨
+</h2>
+
+<p>
+HTML CSS JavaScript
+</p>
+
+</div>
+
+<i class="fab fa-css3-alt"></i>
+
+</div>
+
+<div class="slide">
+
+<div>
+
+<h2>
+Database Skills 🗄
+</h2>
+
+<p>
+SQL & Database
+</p>
+
+</div>
+
+<i class="fas fa-database"></i>
+
+</div>
+
+</div>
+
+<div class="dots">
+
+<div class="dot active"
+onclick="currentSlide(0)">
+</div>
+
+<div class="dot"
+onclick="currentSlide(1)">
+</div>
+
+<div class="dot"
+onclick="currentSlide(2)">
+</div>
+
+</div>
+
+</div>
+
+<h2 style="margin-bottom:15px">
+
+My Courses
+
+</h2>
+
+<div class="cards-grid">
+
+<div class="subject-card glass-panel">
+
+<i class="fab fa-python"></i>
+
+<h4>Python</h4>
+
+</div>
+
+<div class="subject-card glass-panel">
+
+<i class="fab fa-java"></i>
+
+<h4>Java</h4>
+
+</div>
+
+<div class="subject-card glass-panel">
+
+<i class="fas fa-code"></i>
+
+<h4>C++</h4>
+
+</div>
+
+<div class="subject-card glass-panel">
+
+<i class="fab fa-html5"></i>
+
+<h4>HTML</h4>
+
+</div>
+
+<div class="subject-card glass-panel">
+
+<i class="fab fa-css3-alt"></i>
+
+<h4>CSS</h4>
+
+</div>
+
+<div class="subject-card glass-panel">
+
+<i class="fab fa-js"></i>
+
+<h4>JavaScript</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let index=0;
+
+const slider=
+document.getElementById(
+"slider"
+);
+
+const dots=
+document.querySelectorAll(
+".dot"
+);
+
+function currentSlide(n){
+
+index=n;
+
+update();
+
+}
+
+function update(){
+
+slider.style.transform=
+`translateX(-${index*100}%)`;
+
+dots.forEach(
+d=>d.classList.remove(
+"active"
+)
+);
+
+dots[index].classList.add(
+"active"
+);
+
+}
+
+setInterval(()=>{
+
+index++;
+
+if(index>2){
+
+index=0;
+
+}
+
+update();
+
+},3000);
+
+</script>
+
+</body>
+
+</html>

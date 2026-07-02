@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart LMS Login</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(
+135deg,
+#4f46e5,
+#7c3aed,
+#ec4899
+);
+}
+
+.container{
+
+width:800px;
+height:450px;
+
+display:flex;
+
+background:
+rgba(255,255,255,0.15);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+overflow:hidden;
+}
+
+.left{
+
+flex:1;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+padding:30px;
+
+color:white;
+}
+
+.right{
+
+flex:1;
+
+background:white;
+
+padding:40px;
+
+display:flex;
+justify-content:center;
+flex-direction:column;
+}
+
+input{
+
+width:100%;
+padding:12px;
+
+margin:10px 0;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+}
+
+button{
+
+width:100%;
+padding:12px;
+
+border:none;
+
+border-radius:25px;
+
+background:
+linear-gradient(
+90deg,
+#4f46e5,
+#ec4899
+);
+
+color:white;
+
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<h1>Welcome Back 👋</h1>
+
+<p>Continue your learning journey</p>
+
+</div>
+
+<div class="right">
+
+<h2>Student Login</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+<br>
+
+<p>
+
+No account?
+
+<a href="{% url 'register' %}">
+
+Register
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
