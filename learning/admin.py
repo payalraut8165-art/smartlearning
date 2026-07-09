@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Student, Course, Notes
-
+from .models import Student, Course, Notes, Question, Result
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -30,3 +29,24 @@ class NotesAdmin(admin.ModelAdmin):
         'course',
         'created_at'
     )
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'question',
+        'course',
+        'correct_answer'
+    )
+
+
+@admin.register(Result)
+class ResultAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'student',
+        'course',
+        'score',
+        'total',
+        'created_at'
+    )    
