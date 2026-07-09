@@ -11,4 +11,10 @@ urlpatterns = [
 
     path('logout/', views.user_logout, name='logout'),
 
+    path(
+        'python/',
+        views.python_course,
+        name='python'
+    ),
+    
 ]

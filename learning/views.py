@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Student
+from .models import Student, Course
 
 
 def register(request):
@@ -122,4 +122,19 @@ def user_logout(request):
 
     return redirect(
         'login'
+    )
+
+def python_course(request):
+
+    course = Course.objects.get(name="python")
+
+    notes = course.notes.all().order_by("created_at")
+
+    return render(
+        request,
+        "courses/python.html",
+        {
+            "course": course,
+            "notes": notes,
+        }
     )
