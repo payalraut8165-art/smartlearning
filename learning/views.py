@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Student, Course
+from .models import Student, Course, Question, Result
 
 
 def register(request):
@@ -136,5 +136,56 @@ def python_course(request):
         {
             "course": course,
             "notes": notes,
+        }
+    )
+
+def python_quiz(request):
+
+    student_id = request.session.get("student_id")
+
+    if not student_id:
+        return redirect("login")
+
+    student = Student.objects.get(id=student_id)
+
+    course = Course.objects.get(name="python")
+
+    questions = Question.objects.filter(course=course)
+
+    if request.method == "POST":
+
+        score = 0
+
+        total = questions.count()
+
+        for question in questions:
+
+            selected_answer = request.POST.get(str(question.id))
+
+            if selected_answer == question.correct_answer:
+                score += 1
+
+        Result.objects.create(
+            student=student,
+            course=course,
+            score=score,
+            total=total
+        )
+
+        return render(
+            request,
+            "courses/result.html",
+            {
+                "score": score,
+                "total": total,
+            }
+        )
+
+    return render(
+        request,
+        "courses/quiz.html",
+        {
+            "course": course,
+            "questions": questions,
         }
     )

@@ -17,4 +17,10 @@ urlpatterns = [
         name='python'
     ),
     
+ path(
+        'python/quiz/',
+        views.python_quiz,
+        name='python_quiz'
+    ),
+
 ]

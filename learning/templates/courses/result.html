@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI,sans-serif;
+        }
+
+        body{
+
+            background:linear-gradient(135deg,#4f46e5,#7c3aed);
+
+            min-height:100vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            color:white;
+
+        }
+
+        .card{
+
+            width:400px;
+
+            text-align:center;
+
+            background:rgba(255,255,255,.1);
+
+            backdrop-filter:blur(15px);
+
+            padding:40px;
+
+            border-radius:20px;
+
+            border:1px solid rgba(255,255,255,.2);
+
+        }
+
+        h1{
+
+            margin-bottom:20px;
+
+        }
+
+        h2{
+
+            font-size:45px;
+
+            margin:20px 0;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+
+            margin-top:25px;
+
+            padding:12px 25px;
+
+            background:white;
+
+            color:#4f46e5;
+
+            text-decoration:none;
+
+            border-radius:30px;
+
+            font-weight:bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎉 Quiz Completed</h1>
+
+<h2>{{ score }} / {{ total }}</h2>
+
+<p>
+
+Great Job!
+
+</p>
+
+<a
+href="{% url 'python' %}"
+class="btn">
+
+Back to Course
+
+</a>
+
+</div>
+
+</body>
+</html>

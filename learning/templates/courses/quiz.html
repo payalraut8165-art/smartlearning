@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#4f46e5,#7c3aed);
+            min-height:100vh;
+            padding:30px;
+            color:white;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+        }
+
+        .card{
+            background:rgba(255,255,255,.1);
+            backdrop-filter:blur(15px);
+            border-radius:20px;
+            padding:25px;
+            margin-bottom:20px;
+            border:1px solid rgba(255,255,255,.2);
+        }
+
+        h1{
+            margin-bottom:30px;
+        }
+
+        h3{
+            margin-bottom:15px;
+        }
+
+        label{
+            display:block;
+            margin:10px 0;
+            cursor:pointer;
+        }
+
+        .btn{
+
+            margin-top:20px;
+
+            padding:12px 25px;
+
+            border:none;
+
+            border-radius:30px;
+
+            background:white;
+
+            color:#4f46e5;
+
+            font-weight:bold;
+
+            cursor:pointer;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📝 Python Quiz</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{% for question in questions %}
+
+<div class="card">
+
+<h3>
+
+{{ forloop.counter }}.
+{{ question.question }}
+
+</h3>
+
+<label>
+
+<input
+type="radio"
+name="{{ question.id }}"
+value="{{ question.option1 }}">
+
+{{ question.option1 }}
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="{{ question.id }}"
+value="{{ question.option2 }}">
+
+{{ question.option2 }}
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="{{ question.id }}"
+value="{{ question.option3 }}">
+
+{{ question.option3 }}
+
+</label>
+
+<label>
+
+<input
+type="radio"
+name="{{ question.id }}"
+value="{{ question.option4 }}">
+
+{{ question.option4 }}
+
+</label>
+
+</div>
+
+{% endfor %}
+
+<button
+type="submit"
+class="btn">
+
+Submit Quiz
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
