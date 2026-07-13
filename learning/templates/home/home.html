@@ -22,41 +22,68 @@ font-family:Segoe UI,sans-serif;
 }
 
 body{
-background:linear-gradient(
-135deg,
-#4f46e5 0%,
-#7c3aed 50%,
-#c084fc 100%
-);
+    background: linear-gradient(-45deg,
+        #4f46e5,
+        #7c3aed,
+        #8b5cf6,
+        #6366f1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
 
-min-height:100vh;
-padding:20px;
-color:white;
+    min-height:100vh;
+    padding:20px;
+    color:white;
 }
+
+@keyframes gradientBG{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+} 
 
 .glass-panel{
 
-background:rgba(255,255,255,.1);
+    background:rgba(255,255,255,.12);
 
-backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.25);
 
-border-radius:20px;
+    border-radius:22px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.18);
 
 }
 
 .navbar{
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    justify-content:space-between;
 
-align-items:center;
+    align-items:center;
 
-padding:15px 30px;
+    padding:18px 30px;
 
-margin-bottom:20px;
+    margin-bottom:25px;
+
+    transition:.4s;
+
+}
+
+.navbar:hover{
+
+    box-shadow:0 0 25px rgba(255,255,255,.20);
 
 }
 
@@ -78,11 +105,33 @@ font-weight:bold;
 
 .dashboard-layout{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:300px 1fr;
+    grid-template-columns:300px 1fr;
 
-gap:20px;
+    gap:20px;
+
+    animation:fadeUp 1s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 
@@ -236,9 +285,11 @@ transition:.5s;
 
 .subject-card:hover{
 
-transform:translateY(-8px);
+    transform:translateY(-12px) scale(1.04);
 
-background:rgba(255,255,255,.2);
+    background:rgba(255,255,255,.20);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
 
 }
 
@@ -260,7 +311,7 @@ margin-bottom:15px;
 <h2>
 
 Smart LMS |
-Hi {{student.first_name}}
+Hi {{student.first_name}} 🎀🎀
 
 </h2>
 
@@ -314,10 +365,6 @@ font-size:40px;">
 
 <div>
 📱 {{student.phone_number}}
-</div>
-
-<div>
-🏙 {{student.city}}
 </div>
 
 <div>
