@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.register, name='register'),
+    path('register/', views.register, name='register'),
 
     path('login/', views.user_login, name='login'),
 
@@ -23,4 +23,9 @@ urlpatterns = [
         name='python_quiz'
     ),
 
+ path(
+         "",
+        views.welcome,
+        name="welcome"
+    ),
 ]

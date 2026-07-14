@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Smart Learning Management System</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+position:relative;
+
+background:linear-gradient(
+-45deg,
+#4f46e5,
+#7c3aed,
+#8b5cf6,
+#3b82f6,
+#06b6d4
+);
+
+background-size:500% 500%;
+
+animation:gradientMove 12s ease infinite;
+
+}
+
+@keyframes gradientMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* Floating Background */
+
+.circle{
+
+position:absolute;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(8px);
+
+animation:float 12s infinite ease-in-out;
+
+}
+
+.c1{
+
+width:170px;
+
+height:170px;
+
+top:-50px;
+
+left:-50px;
+
+}
+
+.c2{
+
+width:250px;
+
+height:250px;
+
+bottom:-90px;
+
+right:-70px;
+
+animation-duration:18s;
+
+}
+
+.c3{
+
+width:100px;
+
+height:100px;
+
+top:65%;
+
+left:18%;
+
+animation-duration:10s;
+
+}
+
+.c4{
+
+width:80px;
+
+height:80px;
+
+top:15%;
+
+right:20%;
+
+animation-duration:8s;
+
+}
+
+.c5{
+
+width:130px;
+
+height:130px;
+
+bottom:18%;
+
+right:35%;
+
+animation-duration:15s;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-40px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* Main Card */
+
+.container{
+
+position:relative;
+
+z-index:10;
+
+width:90%;
+
+max-width:1050px;
+
+padding:30px;
+
+max-height:92vh;
+
+overflow-y:auto;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.2);
+
+box-shadow:0 10px 40px rgba(0,0,0,.25);
+
+color:white;
+
+text-align:center;
+
+animation:fadeUp 1s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.logo{
+
+width:110px;
+
+height:110px;
+
+margin:auto;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.15);
+
+font-size:50px;
+
+box-shadow:0 0 25px rgba(255,255,255,.2);
+
+animation:glow 3s infinite;
+
+}
+
+@keyframes glow{
+
+50%{
+
+box-shadow:0 0 40px #06b6d4;
+
+}
+
+}
+
+h1{
+    font-size:34px;
+
+    margin-top:15px;
+
+    margin-bottom:10px;
+}
+
+.subtitle{
+
+margin-top:15px;
+
+font-size:19px;
+
+line-height:1.7;
+
+opacity:.95;
+
+}
+
+.status{
+
+margin-top:25px;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:10px 20px;
+
+background:rgba(255,255,255,.15);
+
+border-radius:30px;
+
+font-size:15px;
+
+}
+
+.dot{
+
+width:12px;
+
+height:12px;
+
+background:#22c55e;
+
+border-radius:50%;
+
+box-shadow:0 0 15px #22c55e;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.4);
+
+}
+
+}
+
+.typing{
+
+margin-top:20px;
+
+height:30px;
+
+font-size:18px;
+
+font-weight:bold;
+
+color:white;
+
+}
+
+.features{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:18px;
+
+margin-top:35px;
+
+}
+
+.feature{
+
+background:rgba(255,255,255,.12);
+
+padding:18px;
+
+border-radius:18px;
+
+transition:.4s;
+
+cursor:pointer;
+
+border:1px solid rgba(255,255,255,.12);
+
+}
+
+.feature:hover{
+
+transform:translateY(-10px) scale(1.04);
+
+background:rgba(255,255,255,.22);
+
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+}
+
+.feature i{
+
+font-size:38px;
+
+margin-bottom:12px;
+
+color:white;
+
+}
+
+.feature h3{
+
+margin-bottom:10px;
+
+}
+
+.feature p{
+
+font-size:14px;
+
+line-height:1.6;
+
+opacity:.9;
+
+}
+
+.stats{
+
+display:flex;
+
+justify-content:space-around;
+
+margin:35px 0;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.stat{
+
+text-align:center;
+
+}
+
+.stat h2{
+
+font-size:34px;
+
+}
+
+.stat p{
+
+margin-top:8px;
+
+opacity:.9;
+
+}
+
+.btn{
+
+display:inline-block;
+
+margin-top:10px;
+
+padding:15px 42px;
+
+border-radius:50px;
+
+background:linear-gradient(90deg,#06b6d4,#7c3aed);
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+font-weight:bold;
+
+transition:.4s;
+
+box-shadow:0 8px 25px rgba(124,58,237,.4);
+
+}
+
+.btn:hover{
+
+transform:translateY(-5px) scale(1.06);
+
+box-shadow:0 12px 35px rgba(6,182,212,.45);
+
+}
+
+footer{
+
+margin-top:30px;
+
+font-size:14px;
+
+opacity:.8;
+
+}
+
+@media(max-width:900px){
+
+.features{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:650px){
+
+.container{
+
+padding:30px 20px;
+
+}
+
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+.stats{
+
+flex-direction:column;
+
+}
+
+h1{
+
+font-size:30px;
+
+}
+
+.subtitle{
+
+font-size:16px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="circle c1"></div>
+
+<div class="circle c2"></div>
+
+<div class="circle c3"></div>
+
+<div class="circle c4"></div>
+
+<div class="circle c5"></div>
+
+<div class="container">
+
+<div class="logo">
+
+<i class="fas fa-robot"></i>
+
+</div>
+
+<h1>
+
+AI Smart Learning Management System
+
+</h1>
+
+<p class="subtitle">
+
+Learn Smarter with Artificial Intelligence.<br>
+
+Your Personal AI Learning Companion for Smart Study.
+
+</p>
+
+<div class="status">
+
+<div class="dot"></div>
+
+AI Status : ONLINE
+
+</div>
+
+<div class="typing" id="typingText">
+
+Initializing AI...
+
+</div>
+
+<div class="features">
+
+<div class="feature">
+
+<i class="fas fa-robot"></i>
+
+<h3>AI Chatbot</h3>
+
+<p>Ask your doubts anytime and get instant AI-powered answers.</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-file-pdf"></i>
+
+<h3>AI Notes</h3>
+
+<p>Generate beautiful notes and download them as PDF.</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-brain"></i>
+
+<h3>AI Quiz</h3>
+
+<p>Create quizzes automatically using Artificial Intelligence.</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fab fa-youtube"></i>
+
+<h3>Smart Playlist</h3>
+
+<p>Watch default playlists or add your own YouTube playlist.</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-chart-line"></i>
+
+<h3>Progress Tracker</h3>
+
+<p>Track your daily learning and improve your performance.</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-lightbulb"></i>
+
+<h3>AI Suggestions</h3>
+
+<p>Receive personalized study recommendations powered by AI.</p>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<h2>10+</h2>
+
+<p>Courses</p>
+
+</div>
+
+<div class="stat">
+
+<h2>24/7</h2>
+
+<p>AI Support</p>
+
+</div>
+
+<div class="stat">
+
+<h2>100%</h2>
+
+<p>Smart Learning</p>
+
+</div>
+
+</div>
+
+<a href="{% url 'register' %}" class="btn">
+
+🚀 Get Started
+
+</a>
+
+<script>
+
+// ----------------------
+// AI Typing Animation
+// ----------------------
+
+const textArray=[
+
+"🤖 Initializing AI Assistant...",
+
+"📚 Loading Smart Learning Platform...",
+
+"📄 AI Notes Generator Ready...",
+
+"💬 AI Chatbot Online...",
+
+"🚀 Welcome to AI Smart Learning Management System"
+
+];
+
+let textIndex=0;
+let charIndex=0;
+
+const typing=document.getElementById("typingText");
+
+function type(){
+
+if(charIndex<textArray[textIndex].length){
+
+typing.innerHTML+=textArray[textIndex].charAt(charIndex);
+
+charIndex++;
+
+setTimeout(type,50);
+
+}
+
+else{
+
+setTimeout(erase,1800);
+
+}
+
+}
+
+function erase(){
+
+if(typing.innerHTML.length>0){
+
+typing.innerHTML=typing.innerHTML.slice(0,-1);
+
+setTimeout(erase,25);
+
+}
+
+else{
+
+textIndex++;
+
+if(textIndex>=textArray.length){
+
+textIndex=0;
+
+}
+
+charIndex=0;
+
+setTimeout(type,400);
+
+}
+
+}
+
+type();
+
+
+// ----------------------
+// Greeting
+// ----------------------
+
+const hour=new Date().getHours();
+
+let greeting="";
+
+if(hour<12){
+
+greeting="💖 Good Morning";
+
+}
+
+else if(hour<17){
+
+greeting="🎀 Good Afternoon";
+
+}
+
+else{
+
+greeting="🥰 Good Evening";
+
+}
+
+document.querySelector("h1").innerHTML=
+
+greeting+"<br>AI Smart Learning Management System";
+
+
+// ----------------------
+// Card Hover Effect
+// ----------------------
+
+document.querySelectorAll(".feature").forEach(card=>{
+
+card.addEventListener("mousemove",()=>{
+
+card.style.transform="translateY(-10px) scale(1.05)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0px)";
+
+});
+
+});
+
+
+// ----------------------
+// Floating Sparkles
+// ----------------------
+
+for(let i=0;i<25;i++){
+
+let star=document.createElement("div");
+
+star.style.position="absolute";
+
+star.style.width="4px";
+
+star.style.height="4px";
+
+star.style.borderRadius="50%";
+
+star.style.background="white";
+
+star.style.opacity=".35";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+star.style.animation=`twinkle ${2+Math.random()*4}s infinite`;
+
+document.body.appendChild(star);
+
+}
+
+</script>
+
+<style>
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.8);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.6);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:scale(.8);
+
+}
+
+}
+
+</style>
+
+</body>
+
+</html>

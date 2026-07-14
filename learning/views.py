@@ -189,3 +189,9 @@ def python_quiz(request):
             "questions": questions,
         }
     )
+
+def welcome(request):
+    return render(
+        request,
+        "welcome/welcome.html"
+    )    
